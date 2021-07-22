@@ -4,13 +4,13 @@ Spending money can be just as great as receiving it, so you can keep working har
 
 ## :credit_card: What it does
 
-**Party Penny** is a finance tracker that emphasizes budgeting some time to have fun! After connecting your bank info to the app and filling out your preferences, Party Penny will keep track of your budget.
+**Party Penny** is a finance tracker that emphasizes on budgeting some time to have fun! After connecting your bank info to the app and filling out your preferences, Party Penny will calculate your fun budget, then suggest products you can buy or locations nearby to enjoy you time with menu pricing within your budget!
 
 ### Find a Place to Go
 The Places to Go tab allows you to find restaurants, bars, and cafes near you within your fun budget. No more eating out at places that your pocket can't afford, while still enjoying a night out with friends, stress-free!
 
 ### The Buddy System
-Compete against your buddies to find out who has the best or worst spending habits! Earn points by staying within your budget, or lose points by exceeding. You can redeem offers and discounts on select products purchased in-app. Nudge your buddies when they overspend, and find locations that match you and your buddies' preferences within each of your fun budgets!
+Go up against your buddies to discover who manages their money the best. Earn points by staying within your financial plan or lose points if you do not. You may redeem your points on our product catalog page, to receive some cool discounts! Nudge your buddies when they overspend, and find locations that match you and your buddies' preferences within each of your fun budgets!
 
 ### Purchase Products
 Spend your fun budget on fun products! Select from our catalog of items to buy in-app or from nearby retailers. If you have buddies, you may be able to redeem offers and discounts on certain products purchased in-app using your points.
