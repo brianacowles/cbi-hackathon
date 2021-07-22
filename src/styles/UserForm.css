@@ -1,3 +1,227 @@
-.UserForm ul {
+.UserForm {
+    background-color: transparent;
+}
+
+.UserForm h1 {
+    font-family: 'Raleway', sans-serif; font-size: 1.1em; color: white; font-weight: 600;
+    margin: 0;
+}
+
+.UserForm .user-header {
+    padding: 5% 5%;
+}
+
+.UserForm .user-header .user-back {
+    color: white; font-size: 0.8em;
+}
+
+.UserForm .user-header .total-balance {
+    padding-left: 5%;
+    padding-top: 5%;
+}
+
+.UserForm .user-header .balance-amount {
+    font-weight: 800; font-size: 2em;
+    padding-left: 5%;
+}
+
+.UserForm .user-header .balance-msg {
+    font-weight: 300; color: #00bed8; font-size: 0.8em;
+    padding-left: 5%;
+}
+
+.UserForm .dock {
+    background-color: white;
+    padding: 5%;
+    border-radius: 20px;
+    height: 1000px;
+}
+
+.UserForm .dock .dock-desc {
+    font-size: 0.6em;
+    text-align: center;
+    padding-bottom: 3%;
+}
+
+.UserForm .dock h2 {
+   font-size: 0.7em; 
+   padding: 4% 0;
+}
+
+.UserForm .dock .dock-fields {
+    padding: 0 5%;
+}
+
+.UserForm .dock .expense-ex {
+    font-size: 0.6em;
+    padding: 1%;
+}
+
+.UserForm .expenses {
     list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.UserForm .expenses input {
+    font-family: 'Raleway', sans-serif;
+}
+
+.UserForm .expenses .expense-input {
+    width: 42%;
+    margin: 2%; padding-left: 5px;
+    border: 1px solid #a6a6a6;
+    height: 23px;
+    font-family: 'Raleway', sans-serif;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    font-size: 0.8em;
+    border-radius: 2px;
+}
+
+.UserForm .expenses .amount-input {
+    width: 10%;
+    margin: 2%; padding-left: 5px;
+    border: 1px solid #a6a6a6;
+    height: 23px;
+    font-family: 'Raleway', sans-serif;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 2px;
+}
+
+.UserForm .expenses .cycle-input {
+    width: 30%;
+    margin: 2%; padding-left: 5px;
+    border: 1px solid #a6a6a6;
+    height: 26px;
+    font-family: 'Raleway', sans-serif;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: url("../media/dropdown.png") 96% / 15% no-repeat transparent;
+    border-radius: 2px;
+
+}
+
+.UserForm .add-button {
+    width: 96%;
+    margin: 2%;
+    background-color: transparent;
+    border: 1px solid #a6a6a6;
+    padding: 2%;
+    font-family: 'Raleway', sans-serif; color: #a6a6a6;
+    border-radius: 2px;
+}
+
+.UserForm .remaining-balance {
+    color: #00bed8;
+    font-weight: 400;
+}
+
+fieldset {
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+.percentages input[type="radio"], .alcohol input[type="radio"], .places input[type="radio"], .beverages input[type="checkbox"]{
+    opacity: 0;
+    position: fixed;
+    width: 0;
+}
+  
+.percentages input[type="radio"]:checked+label, .alcohol input[type="radio"]:checked+label, .places input[type="radio"]:checked+label, .beverages input[type="checkbox"]:checked+label{
+    background-color: #00bed8;
+    color: white;
+}
+
+.percentages label, .places label, .beverages label {
+    display: inline-block;
+    background-color: transparent;
+    padding: 3% 5%;
+    font-family: 'Raleway', sans-serif; color: #a6a6a6; font-weight: 600; font-size: 0.8em;
+    cursor: pointer;
+    border-radius: 2px;
+    border: 2px solid #00bed8;
+    margin-right: 2%;
+    min-width: 8%;
+    text-align: center;
+}
+
+
+.custom-input {
+    position: absolute;
+    height: 31px;
+    right: 65px;
+    width: 74px;
+    margin-top: 2px;
+    border: none;
+    font-family: 'Raleway', sans-serif; color: #a6a6a6; font-weight: 600; font-size: 0.8em;
+    text-align: center;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 2px;
+}
+
+.alcohol .yes {
+    display: inline-block;
+    background-color: transparent;
+    padding: 3% 5%;
+    font-family: 'Raleway', sans-serif; color: #a6a6a6; font-weight: 600; font-size: 0.8em;
+    cursor: pointer;
+    border-radius: 2px 0 0 2px;
+    border: 2px solid #00bed8;
+    min-width: 8%;
+    text-align: center;
+}
+
+.alcohol .no {
+    display: inline-block;
+    background-color: transparent;
+    padding: 3% 5%;
+    font-family: 'Raleway', sans-serif; color: #a6a6a6; font-weight: 600; font-size: 0.8em;
+    cursor: pointer;
+    border-radius: 0 2px 2px 0;
+    border: 2px solid #00bed8;
+    min-width: 8%;
+    text-align: center;
+}
+
+.places {
+    font-size: 0.9em;
+}
+
+.places label {
+    padding: 4%;
+}
+
+.refresh-date {
+    border: none;
+    border-bottom: 1px solid #00bed8;
+    width: 50%;
+    text-align: left;
+    font-family: 'Raleway', sans-serif; color: black;
+    font-size: 1em;
+}
+
+.suffix {
+	position:absolute;
+	left:20px;
+    font-size: 1em;
+}
+
+
+.next-button {
+    background-color: #1a4789;
+    font-family: 'Raleway', sans-serif; font-weight: 600;
+    color: white;
+    padding: 4%;
+    float: right;
+    width: 30%;
+    border-radius: 6px;
+    margin-top: 5%;
 }
