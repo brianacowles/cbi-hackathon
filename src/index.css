@@ -1,0 +1,70 @@
+:root{
+    font-size: 16px;
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+#Button-Content{
+    border: .5rem solid black;
+    background: #dbd6d6;
+}
+
+#Title-Area{
+    padding-left: 1rem;
+}
+
+#Main-Title{
+    font-family: 'Raleway', serif;
+}
+
+#subtitle-info{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#subtitle-info .info{
+    font-size: .75rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+#description-area{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#Locaiton-Description{
+    padding-left: 1rem;
+    padding-bottom: 1rem;
+    font-size: .75rem;
+}
+
+.btns-container{
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    align-items: center;
+}
+
+.btn-item{
+    width: 100%;
+    padding: .5rem;
+
+}
+
+.btn-link{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    justify-content: center;
+}
+
+.btn-text{
+    align-items: center;
+}
