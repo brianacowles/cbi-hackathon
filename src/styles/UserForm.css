@@ -1,5 +1,6 @@
 .UserForm {
     background-color: transparent;
+    background-image: url('../media/bg.jpg');
 }
 
 .UserForm h1 {
@@ -26,13 +27,14 @@
 }
 
 .UserForm .user-header .balance-msg {
-    font-weight: 300; color: #00bed8; font-size: 0.8em;
+    font-weight: 400; color: #00bed8; font-size: 0.8em;
     padding-left: 5%;
 }
 
 .UserForm .dock {
     background-color: white;
     padding: 5%;
+    padding-top: 8%;
     border-radius: 20px 20px 0 0;
     min-height: 80vh;
 }
@@ -40,21 +42,19 @@
 .UserForm .dock .dock-desc {
     font-size: 0.7em;
     text-align: center;
-    padding-bottom: 3%;
+    padding: 0 5% 3% 5%;
     font-weight: 600;
 }
 
 .UserForm .dock .dock-warn {
     font-size: 0.7em;
     text-align: center;
-    padding-bottom: 3%;
 }
 
 
 .UserForm .dock h2 {
    font-size: 0.8em; 
-   padding: 4% 0;
-   margin-top: 2%;
+   padding-bottom: 4%;
 }
 
 .UserForm .dock .dock-fields {
@@ -97,7 +97,7 @@
 }
 
 .UserForm .expenses .amount-input {
-    width: 10%;
+    width: 12%;
     margin: 2% 1%; padding-left: 5px;
     border: 1px solid #a6a6a6;
     height: 23px;
@@ -134,7 +134,8 @@
 
 .UserForm .remaining-balance {
     color: #00bed8;
-    font-weight: 600;
+    font-weight: 600; font-size: 0.9em !important;
+    padding-top: 3% !important;
     padding-bottom: 0% !important;
 }
 
@@ -243,4 +244,9 @@ fieldset {
     border-radius: 6px;
     margin-top: 5%; margin-left: 70%;
     border: none;
+}
+
+hr {
+    margin: 8% 0;
+    border-top: #a6a6a6;
 }

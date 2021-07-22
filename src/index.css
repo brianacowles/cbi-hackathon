@@ -1,16 +1,39 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;800&display=swap');
 
 html {
-    background-image: url('./media/bg.jpg');
+    width: 375px;
+    height: 666px;
+    margin: auto;
+    background-color: #a6a6a615;
 }
 
 body {
     margin: 0;
     font-family: 'Raleway', sans-serif;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
+
 
 h1, h2, h3, h4, h5, h6, p {
     margin: 0;
 }
 
 input:focus {outline: none; }
+
+@keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+  }
+
+.mockup {
+    object-fit: cover;
+    width: 375px;
+    height: 666px;
+    animation: fadeIn 0.2s;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

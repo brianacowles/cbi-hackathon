@@ -1,4 +1,6 @@
+/* eslint-disable no-unused-vars */
 import { useState } from "react";
+import { Link } from 'react-router-dom';
 
 import "../styles/UserForm.css";
 
@@ -66,7 +68,7 @@ function UserForm() {
     // user expenses - this is used for the dynamic list
     const [expenses, setExpenses] = useState([]);
     // dummy value "pulled in" from card
-    const balance = 100000;
+    const balance = 134545;
     // remaining balance calculated using expenses
     const [remaining, setRemaining] = useState(balance / 100);
     const [percentage, setPercentage] = useState(10);
@@ -75,7 +77,7 @@ function UserForm() {
     const [places, setPlaces] = useState("Cafes");
     const [refreshDate, setRefreshDate] = useState(1);
     const [suffix, setSuffix] = useState(ordinal_suffix_of(refreshDate));
-
+    
     // called when an expense is changed - updates the value
     const updateExpense = idx => e => {
         // temp array to manipulate
@@ -103,6 +105,7 @@ function UserForm() {
             </div>
             <div className="dock">
                 <p className="dock-desc">To calculate a fun budget, we'd like to make sure the serious business is taken care of first.</p><p className="dock-warn">*All values on this page can be changed later!</p>
+                <hr></hr>
                 <div className="dock-fields">
                     <h2>Enter your recurring or necessary expenses</h2>
                     <p className="expense-ex">For example: rent, tuition, groceries</p>
@@ -120,7 +123,7 @@ function UserForm() {
                         )}
                     </ul>
                     <button className="add-button" onClick={() => setExpenses(expenses => [...expenses, {"id": Date.now(), "expense": "", "amount": 0, "cycle": cycles.MONTHLY}])}>+ Add Item</button>
-
+                    <hr></hr>
                     <h2>What percentage of your remaining balance would you like to keep as a fun budget?</h2>
                     
                     <div className="percentages">
@@ -139,9 +142,8 @@ function UserForm() {
                             {customVisible ? <input className="custom-input" type="number" value={percentage} onChange={(e) => setPercentage(e.target.value)}></input> : false}
                         </fieldset>
                     </div>
-                    
                     <h2 className="remaining-balance">Remaining Balance: ${(remaining*(percentage/100)).toFixed(2).toLocaleString()}</h2>
-
+                    <hr></hr>
                     <h2>Would you like recommendations to include alcoholic beverages?</h2>
                     <div className="alcohol">
                         <fieldset id="alcohol">
@@ -154,6 +156,7 @@ function UserForm() {
                     </div>
                     {alcohol ? 
                         <div className="beverages">
+                            <hr></hr>
                             <h2>Which beverages are you interested in?</h2>
                             <fieldset id="beverages">
                                 <input type="checkbox" id="beer" name="beverages" />
@@ -171,7 +174,7 @@ function UserForm() {
                             </fieldset>
                         </div>
                     : false }
-
+                    <hr></hr>
                     <h2>What type of places do you prefer for hanging out?</h2>
                     <div className="places">
                         <fieldset id="places">
@@ -188,13 +191,16 @@ function UserForm() {
                             <label htmlFor="Clubs">Clubs</label>
                         </fieldset>
                     </div>
+                    <hr></hr>
                     <h2>Set a monthly date for your budget to refresh:</h2>
                     <div style={{position: "relative"}}>
                         <input min={1} max={31} className="refresh-date" id="refresh-date" type="number" defaultValue={refreshDate} onChange={(e) => setSuffix(ordinal_suffix_of(parseInt(e.target.value)))}></input>
                         <label htmlFor="refresh-date" className="suffix">{suffix} of every month</label> 
                     </div>                
                 </div>
-                <button className="next-button">Next &#62;</button>
+                <Link to="/home">
+                    <button className="next-button">Next &#62;</button>
+                </Link>
             </div>
         </div>
     );
