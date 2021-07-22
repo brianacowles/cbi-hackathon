@@ -2,6 +2,25 @@ import { useState } from "react";
 
 import "../styles/UserForm.css";
 
+// an object acting like an enum
+const cycles = {
+    DAILY: "daily",
+    WEEKLY: "weekly",
+    BIWEEKLY: "biweekly",
+    MONTHLY: "monthly",
+    BIMONTHLY: "bimontly",
+    YEARLY: "yearly",
+
+}
+
+const place_vals = {
+    CAFES: "Cafes",
+    BARS: "Bars",
+    RESTAURANTS: "Restaurants",
+    CLUBS: "Clubs",
+}
+
+
 function ordinal_suffix_of(i) {
     var j = i % 10,
         k = i % 100;
@@ -17,44 +36,40 @@ function ordinal_suffix_of(i) {
     return "th";
 }
 
+function getAmount(amount, cycle) {
+    switch(cycle) {
+        case cycles.DAILY:
+            return amount*30;
+        case cycles.WEEKLY:
+            return amount*4;
+        case cycles.BIWEEKLY:
+            return amount*2;
+        case cycles.MONTHLY:
+            console.log("HEY");
+            return amount;
+        case cycles.BIMONTHLY:
+            return amount/2;
+        case cycles.YEARLY:
+            return amount/12;
+        default:
+            return 0;   
+    }
+}
+
 /*
     The form the user will fill out when setting up an account
 */
 function UserForm() {
-    // an object acting like an enum
-    const cycles = {
-        DAILY: "daily",
-        WEEKLY: "weekly",
-        BIWEEKLY: "biweekly",
-        MONTHLY: "monthly",
-        BIMONTHLY: "bimontly",
-        YEARLY: "yearly",
 
-    }
-
-    const place_vals = {
-        CAFES: "Cafes",
-        BARS: "Bars",
-        RESTAURANTS: "Restaurants",
-        CLUBS: "Clubs",
-    }
-
-    const beverages = {
-        BEER: "Beer",
-        WINE: "Wine",
-        LIQUOR: "Liquor",
-        OTHER: "Other",
-    }
 
     /* STATE */
     // user expenses - this is used for the dynamic list
     const [expenses, setExpenses] = useState([]);
     // dummy value "pulled in" from card
-    const balance = 134545;
+    const balance = 100000;
     // remaining balance calculated using expenses
     const [remaining, setRemaining] = useState(balance / 100);
     const [percentage, setPercentage] = useState(10);
-    console.log(percentage);
     const [customVisible, setCustomVisible] = useState(false);
     const [alcohol, setAlcohol] = useState(true);
     const [places, setPlaces] = useState("Cafes");
@@ -69,7 +84,12 @@ function UserForm() {
         updatedExpenses[idx][e.target.name] = e.target.value;
         setExpenses(updatedExpenses);
         // update remaining using new expenses values
-        setRemaining(balance/100 - expenses.reduce((acc, cur) => acc + Number(cur.amount), 0));
+        setRemaining(balance/100 - expenses.reduce((acc, cur) => acc + getAmount(Number(cur.amount), cur.cycle), 0));
+    }
+
+    const handleDelete = id => e => {
+        setExpenses([...expenses].filter(item => item.id !== id));
+        setRemaining(balance/100 - [...expenses].filter(item => item.id !== id).reduce((acc, cur) => acc + getAmount(Number(cur.amount), cur.cycle), 0));
     }
 
     // what we render on the page
@@ -82,13 +102,14 @@ function UserForm() {
                 <h3 className="balance-msg">available in bank checking account</h3>
             </div>
             <div className="dock">
-                <p className="dock-desc">To calculate a fun budget, we'd like to make sure the serious business is taken care of first. *All values on this page can be changed later!</p>
+                <p className="dock-desc">To calculate a fun budget, we'd like to make sure the serious business is taken care of first.</p><p className="dock-warn">*All values on this page can be changed later!</p>
                 <div className="dock-fields">
                     <h2>Enter your recurring or necessary expenses</h2>
                     <p className="expense-ex">For example: rent, tuition, groceries</p>
                     <ul className="expenses">
                         {expenses.map((e, idx) => 
-                            <li key={idx}>
+                            <li key={e.id}>
+                                <button className="expense-delete" onClick={handleDelete(e.id)}>×</button>
                                 <input className="expense-input" w="40%" type="text" name="expense" value={e.expense} onChange={updateExpense(idx)}></input>
                                 <input className="amount-input" width="20%" type="number" name="amount" value={e.amount} onChange={updateExpense(idx)}></input>
                                 <select className="cycle-input" w="40%" name="cycle" defaultValue={e.cycle} onChange={updateExpense(idx)}>
@@ -98,7 +119,7 @@ function UserForm() {
                             </li>
                         )}
                     </ul>
-                    <button className="add-button" onClick={() => setExpenses(expenses => [...expenses, {"expense": "", "amount": 0, "cycle": cycles.MONTHLY}])}>+ Add Item</button>
+                    <button className="add-button" onClick={() => setExpenses(expenses => [...expenses, {"id": Date.now(), "expense": "", "amount": 0, "cycle": cycles.MONTHLY}])}>+ Add Item</button>
 
                     <h2>What percentage of your remaining balance would you like to keep as a fun budget?</h2>
                     
@@ -119,7 +140,7 @@ function UserForm() {
                         </fieldset>
                     </div>
                     
-                    <h2 className="remaining-balance">Remaining Balance: ${(remaining*(percentage/100)).toLocaleString()}</h2>
+                    <h2 className="remaining-balance">Remaining Balance: ${(remaining*(percentage/100)).toFixed(2).toLocaleString()}</h2>
 
                     <h2>Would you like recommendations to include alcoholic beverages?</h2>
                     <div className="alcohol">
@@ -154,16 +175,16 @@ function UserForm() {
                     <h2>What type of places do you prefer for hanging out?</h2>
                     <div className="places">
                         <fieldset id="places">
-                            <input type="radio" id="Cafes" name="places" defaultChecked onClick={()=>setPlaces(place_vals.CAFES)}/>
+                            <input type="checkbox" id="Cafes" name="places" onClick={()=>setPlaces(place_vals.CAFES)}/>
                             <label htmlFor="Cafes">Cafes</label>
 
-                            <input type="radio" id="Bars" name="places" onClick={()=>setPlaces(place_vals.BARS)}/>
+                            <input type="checkbox" id="Bars" name="places" onClick={()=>setPlaces(place_vals.BARS)}/>
                             <label htmlFor="Bars">Bars</label>
 
-                            <input type="radio" id="Restaurants" name="places" onClick={()=>setPlaces(place_vals.RESTAURANTS)}/>
+                            <input type="checkbox" id="Restaurants" name="places" onClick={()=>setPlaces(place_vals.RESTAURANTS)}/>
                             <label htmlFor="Restaurants">Restaurants</label>
 
-                            <input type="radio" id="Clubs" name="places" onClick={()=>setPlaces(place_vals.CLUBS)}/>
+                            <input type="checkbox" id="Clubs" name="places" onClick={()=>setPlaces(place_vals.CLUBS)}/>
                             <label htmlFor="Clubs">Clubs</label>
                         </fieldset>
                     </div>
@@ -173,7 +194,7 @@ function UserForm() {
                         <label htmlFor="refresh-date" className="suffix">{suffix} of every month</label> 
                     </div>                
                 </div>
-                <button className="next-button">Next ></button>
+                <button className="next-button">Next &#62;</button>
             </div>
         </div>
     );
